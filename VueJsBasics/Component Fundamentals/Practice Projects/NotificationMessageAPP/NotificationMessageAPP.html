@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Message APP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+  
+  <div id="app" class="ui container">
+    <h1>Notification Center</h1>
+    
+    <!-- Notification Message Markup -->
+    <!-- Types: info, warning, error, success -->
+
+    <notification-message type="error" header="Oh no!">
+      <p>your flight has been <b>cancelled</b></p>
+    </notification-message>
+
+    <notification-message type="success" header="Oh yeah!">
+      <p>your flight has been <b>cancelled</b></p>
+    </notification-message>
+
+    <notification-message>
+      Good Morning
+    </notification-message>
+  </div>
+
+<script type="text/x-template" id="notification-message-template">
+  <div class="ui message" :class="type" v-if="!hidden">
+    <i class="close icon" @click="hide"></i>
+    <div class="header">
+      You are eligible for a reward
+    </div>
+    <slot></slot>
+  </div>
+</script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="NotificationMessageAPP.js"></script>
+</body>
+</html>

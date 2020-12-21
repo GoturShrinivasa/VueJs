@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="NestedComponents.css" rel="stylesheet" type="text/css">
+  <title>Nested Components</title>
+</head>
+
+<body>
+  <div id="app" class="container mx-auto py-6">
+    <header>
+      <div>
+        <span id="logo">IT industry</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <h1 class="title">IT Categories</h1>
+
+      <h2 class="subtitle">
+        Important Categories in IT industry that we can find:
+      </h2>
+
+     <!-- using nested components -->
+      <role-picker></role-picker>
+      <role-picker></role-picker>
+      <role-picker></role-picker>
+
+    </div>
+  </div>
+
+   <!-- creating Nested Component, we have roles template inside rolePickerTemplate -->
+  <script type="text/x-template" id="rolePickerTemplate">
+    <div class="plans">
+      <roles v-for="role in roles" :name="role"></roles>
+    </div>
+  </script>
+    <!-- ------------------------------- -->
+
+  <script type="text/x-template" id="roleTemplateId">
+    <div class="plan">
+      <div class="description">
+        <span class="title">
+          {{name}}
+        </span>
+      </div>
+    </div>
+  </script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="NestedComponents.js"></script>
+</body>
+
+</html>

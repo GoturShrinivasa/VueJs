@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <title>GitHub User Profiles</title>
+</head>
+
+<body>
+  <div id="app">
+    <div style="display: flex; justify-content: space-between;margin-top: 10px;">
+      <github-user-card v-for="username in usernames" :username="username"></github-user-card>
+    </div>
+  </div>
+
+  <script type="text/x-template" id="github-user-card-template">
+  <div>
+    <div class="ui card">
+      <div class="image">
+        <img :src="user.avatar_url">
+      </div>
+      <div class="content">
+        <a :href="`https://github.com/${username}`" class="header">{{user.name}}</a>
+        <div class="meta">
+          <span class="date">Joined in {{user.created_at}}</span>
+        </div>
+        <div class="description">
+          {{user.bio}}
+        </div>
+      </div>
+      <div class="extra content">
+        <a>
+          <i class="user icon"></i>
+          {{user.followers}} Friends
+        </a>
+      </div>
+    </div>
+  </div>
+</script>
+
+  <!-- <script src="GitHubUserProfiles.js"></script> -->
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    Vue.component('github-user-card', {
+      template: '#github-user-card-template',
+      props: {
+        username: {
+          type: String,
+          
+        }
+      },
+      data() {
+        return {
+          user: {}
+        }
+      },
+      created() {
+        axios.get(`https://api.github.com/users/${this.username}`)
+          .then(response => {
+            this.user = response.data
+          })
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        usernames: ['hootlex', 'rahaug', 'sdras', 'akryum','GoturShrinivasa']
+      }
+    })
+  </script>
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script> -->
+</body>
+
+</html>

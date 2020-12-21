@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples on Multiple Slots</title>
+  <link rel="stylesheet" type="text/css" href="slots.css">
+</head>
+<body>
+ <div id="app">
+  <todo-item>
+    Get some Code for me
+    <br>
+    <template v-slot:description>
+      coding increases your thinking.
+    </template>
+    <br>
+    <template v-slot:button-text>
+        Click Me
+    </template>
+  </todo-item>
+<br>
+  <todo-item>
+    Dance in the rain
+  </todo-item>
+
+ </div> 
+
+
+  <script type="text/x-template" id="todo-item-template">
+    <div>
+      <input type="checkbox" v-model="completed">
+      <span :class="{done: completed}">
+        <slot></slot>
+      </span>
+      <slot name="description"></slot> 
+      <button>
+        <slot name="button-text">Highlight</slot>
+      </button>   
+    </div>
+  </script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="slots.js"></script>
+</body>
+</html>

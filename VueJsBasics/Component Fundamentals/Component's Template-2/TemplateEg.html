@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Example</title>
+</head>
+
+<body>
+
+<div id="app">
+  <click-counter></click-counter>
+  <click-counter></click-counter>
+  <click-counter></click-counter>
+  <click-counter></click-counter>
+</div>
+
+  <script type="text/x-template" id="templateWrapperId">
+    <div>
+      <p>the count is:</p>
+      <button @click="count++">{{count}}</button>
+    </div>
+  </script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="TemplateEg.js"></script>
+</body>
+
+</html>
+
+
+<!-- three important things to note here:
+1)id="app" decides where i need to instantiate Vue.js object
+2)creation of component:
+      *name of the component, which i can able to use wherever i want along with id="app"
+      *creation of x-template within <script> tag in html:
+        Remember the name of the id="templateWrapperId", which later i will be using to create component
+      *template lets you to have one and only one root element so have it everything inside <div></div> -->
